@@ -64,6 +64,9 @@ There is no account, no server and no VPN.
 > The workstation tray starts paused (`tray -off`) so ordinary browsing stays on the primary Plusnet
 > route. Starting merging from the tray is an explicit bulk-transfer mode; pausing it returns new
 > connections to Plusnet without disconnecting TalkTalk or the phone.
+> `net-merge-bulk.service` keeps a loopback-only SOCKS proxy on `127.0.0.1:1080`. Megapull's
+> transfer services use that proxy, so their parallel connections can use every healthy link while
+> ordinary applications continue to use Plusnet directly.
 
 A real test with Wi-Fi + an Android USB tether + an iPhone hotspot, 9 downloads at once:
 **232-303 Mbit/s**. The fastest connection alone gave about 121 Mbit/s.

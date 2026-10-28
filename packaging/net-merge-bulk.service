@@ -1,0 +1,14 @@
+[Unit]
+Description=Net Merge bulk-transfer proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/net-merge socks -listen 127.0.0.1:1080 -ipv6 auto -state-dir %h/.cache/net-merge-bulk -log %h/.cache/net-merge-bulk/net-merge.log
+Restart=on-failure
+RestartSec=2s
+Nice=5
+
+[Install]
+WantedBy=default.target

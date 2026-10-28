@@ -1,5 +1,12 @@
 # State
 
+## 2026-10-28 — bulk-only pooling
+
+Added `packaging/net-merge-bulk.service`, a persistent loopback-only SOCKS endpoint on
+`127.0.0.1:1080` with its own state directory. It discovers the same physical adapters as Net Merge
+but does not install system-wide routes. Megapull can therefore pool parallel bulk-transfer flows
+without placing browsers, Discord or other interactive applications on TalkTalk or Bluetooth.
+
 ## 2026-10-28 — interactive traffic restored to Plusnet
 
 Live diagnosis found that system-wide merging was assigning almost half of new browser flows to
