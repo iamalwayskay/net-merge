@@ -1,5 +1,17 @@
 # State
 
+## 2026-10-28 — interactive traffic restored to Plusnet
+
+Live diagnosis found that system-wide merging was assigning almost half of new browser flows to
+TalkTalk even though its signal was -84 dBm and a 10 MB transfer measured about 0.84 MB/s, versus
+5.43 MB/s on Plusnet. Vodafone's Bluetooth PAN was connected but failed the same live transfer.
+This made page loads wait on the slow paths rather than adding useful capacity. Paused system-wide
+merging and changed the workstation autostart entry to `net-merge tray -off`, so new interactive
+connections use Plusnet by default after future sign-ins. TalkTalk and Vodafone remain connected as
+available links and merging can still be started explicitly for a bulk multi-connection transfer.
+The separate `wg0` interface is the existing WireGuard link to the kdvps private `10.77.0.0/24`
+network; it has no default route and therefore was not carrying ordinary internet browsing.
+
 ## 2026-10-28 — Kay privacy fork
 
 - GitHub fork: `iamalwayskay/net-merge`; upstream remains `net-merge/net-merge`.

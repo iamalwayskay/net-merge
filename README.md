@@ -61,6 +61,9 @@ There is no account, no server and no VPN.
 > its Bluetooth PAN interface being renamed during DHCP. Neither is part of the generic installer.
 > `net-merge-mobile-quota.timer` records all upload and download bytes on that Bluetooth link, warns
 > at 450 GB and disables only Vodafone at 500 GB in each calendar month.
+> The workstation tray starts paused (`tray -off`) so ordinary browsing stays on the primary Plusnet
+> route. Starting merging from the tray is an explicit bulk-transfer mode; pausing it returns new
+> connections to Plusnet without disconnecting TalkTalk or the phone.
 
 A real test with Wi-Fi + an Android USB tether + an iPhone hotspot, 9 downloads at once:
 **232-303 Mbit/s**. The fastest connection alone gave about 121 Mbit/s.
