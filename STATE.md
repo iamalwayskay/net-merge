@@ -18,6 +18,8 @@
 - This computer has saved credentials for Plusnet, TalkTalk and the phone hotspot, but currently only
   one Wi-Fi radio is exposed. Simultaneous aggregation still requires the phone as USB tethering and
   TalkTalk through Ethernet or a second Wi-Fi adapter.
+- NetworkManager autoconnect is enabled for Plusnet, TalkTalk and `Kaylum's S23+ Network`; Net Merge
+  remains auto-paused until at least two physical connections are actually present.
 
 ### Trap
 
