@@ -59,6 +59,8 @@ There is no account, no server and no VPN.
 > Kay's workstation also installs `packaging/net-merge-secondary-wifi.service`, which recreates its
 > hardware-specific second Wi-Fi interface at boot, plus `packaging/10-bluetooth-pan.link` to prevent
 > its Bluetooth PAN interface being renamed during DHCP. Neither is part of the generic installer.
+> `net-merge-mobile-quota.timer` records all upload and download bytes on that Bluetooth link, warns
+> at 450 GB and disables only Vodafone at 500 GB in each calendar month.
 
 A real test with Wi-Fi + an Android USB tether + an iPhone hotspot, 9 downloads at once:
 **232-303 Mbit/s**. The fastest connection alone gave about 121 Mbit/s.

@@ -1,0 +1,6 @@
+[Unit]
+Description=Track and cap Vodafone traffic used by Net Merge
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/net-merge-mobile-quota

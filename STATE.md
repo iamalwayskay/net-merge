@@ -34,6 +34,10 @@
 - The workstation side is automatic across login/reboot: the secondary Wi-Fi service, NetworkManager
   autoconnect profiles and Net Merge autostart are enabled. Android must keep Bluetooth tethering on;
   this workstation has no ADB authorization or KDE Connect pairing with which to change that setting.
+- `net-merge-mobile-quota.timer` samples `bnep0` every minute, persists both upload and download
+  usage under `~/.local/state/net-merge/mobile-quota.json`, warns at 450 GB and disables the Vodafone
+  profile at 500 GB per calendar month. It resets the counter and re-enables autoconnect next month;
+  Plusnet and TalkTalk are never capped by this guard.
 
 ### Trap
 
