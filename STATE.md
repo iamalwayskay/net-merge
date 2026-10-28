@@ -20,6 +20,12 @@
   TalkTalk through Ethernet or a second Wi-Fi adapter.
 - NetworkManager autoconnect is enabled for Plusnet, TalkTalk and `Kaylum's S23+ Network`; Net Merge
   remains auto-paused until at least two physical connections are actually present.
+- The MediaTek MT7922 supports two concurrent managed Wi-Fi interfaces. `wlp5s0` is bound to Plusnet
+  and `wlp5s0-talktalk` is bound to TalkTalk; both were source-bound and verified with distinct public
+  IP addresses. `/etc/systemd/system/net-merge-secondary-wifi.service` recreates the second interface
+  at boot, after which NetworkManager autoconnects TalkTalk.
+- The phone exposes Bluetooth NAP/PAN, but Android currently rejects the NAP connection. Bluetooth
+  tethering must be enabled on the phone before NetworkManager can activate the saved phone profile.
 
 ### Trap
 

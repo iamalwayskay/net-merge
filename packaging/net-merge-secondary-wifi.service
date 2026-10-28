@@ -1,0 +1,12 @@
+[Unit]
+Description=Create the secondary Wi-Fi interface used by Net Merge
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '/usr/sbin/iw dev wlp5s0-talktalk info >/dev/null 2>&1 || /usr/sbin/iw dev wlp5s0 interface add wlp5s0-talktalk type managed'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -56,6 +56,8 @@ There is no account, no server and no VPN.
 > **Privacy fork:** this fork removes the automatic GitHub release check from the tray. It makes no
 > analytics, telemetry, crash-reporting or update-check requests. The per-adapter reachability probes
 > remain because they prevent traffic being assigned to a connection that has lost internet access.
+> Kay's workstation also installs `packaging/net-merge-secondary-wifi.service`, which recreates its
+> hardware-specific second Wi-Fi interface at boot; it is not part of the generic installer.
 
 A real test with Wi-Fi + an Android USB tether + an iPhone hotspot, 9 downloads at once:
 **232-303 Mbit/s**. The fastest connection alone gave about 121 Mbit/s.
