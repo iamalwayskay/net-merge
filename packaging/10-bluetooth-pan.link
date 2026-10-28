@@ -1,0 +1,8 @@
+[Match]
+OriginalName=bnep*
+
+[Link]
+# BlueZ and NetworkManager coordinate PAN interfaces by their kernel bnep name. Renaming one while
+# NetworkManager is starting DHCP tears down the Bluetooth connection on this workstation.
+NamePolicy=keep
+MACAddressPolicy=none

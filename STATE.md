@@ -24,8 +24,10 @@
   and `wlp5s0-talktalk` is bound to TalkTalk; both were source-bound and verified with distinct public
   IP addresses. `/etc/systemd/system/net-merge-secondary-wifi.service` recreates the second interface
   at boot, after which NetworkManager autoconnects TalkTalk.
-- The phone exposes Bluetooth NAP/PAN, but Android currently rejects the NAP connection. Bluetooth
-  tethering must be enabled on the phone before NetworkManager can activate the saved phone profile.
+- The phone exposes Bluetooth NAP/PAN; Android accepts it while Bluetooth tethering is enabled.
+- With Bluetooth tethering enabled, a direct BlueZ `Network1.Connect("nap")` succeeds. NetworkManager
+  then fails because udev renames `bnep0` to a MAC-derived name during DHCP and BlueZ tears it down.
+  `packaging/10-bluetooth-pan.link`, installed under `/etc/systemd/network/`, keeps the kernel name.
 
 ### Trap
 
