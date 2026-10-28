@@ -17,7 +17,6 @@ import (
 	"net-merge/internal/platform"
 	"net-merge/internal/state"
 	"net-merge/internal/tun"
-	"net-merge/internal/update"
 )
 
 const trayRows = 4 // adapters shown in the menu; extra rows stay hidden
@@ -98,9 +97,9 @@ func (u *trayUI) onReady() {
 	u.autoItem = systray.AddMenuItemCheckbox("Pause when there is only one connection", "Pauses merging by itself when fewer than two connections have internet, and starts it again when a second one works. Pausing or starting by hand always wins.", u.ap.enabled)
 	u.signInItem = systray.AddMenuItemCheckbox("Start at sign-in", "Starts net-merge when you sign in, with no password or admin prompt.", platform.AutostartEnabled())
 	u.toggleItem = systray.AddMenuItem("Start merging", "")
-	u.versionItem = systray.AddMenuItem(versionLabel(u.version), "The version of net-merge that is running (the same as net-merge version). Click to open the release page on GitHub.")
+	u.versionItem = systray.AddMenuItem(versionLabel(u.version), "Local privacy build. Updates are installed manually.")
+	u.versionItem.Disable()
 	quit := systray.AddMenuItem("Quit", "Turns system-wide mode off and exits")
-	go u.watchUpdates()
 
 	go func() {
 		u.ap.start(u.startOn)
@@ -147,10 +146,6 @@ func (u *trayUI) onReady() {
 				} else {
 					u.v6Item.Check()
 					u.bal.SetV6Mode(engine.V6Auto)
-				}
-			case <-u.versionItem.ClickedCh:
-				if err := platform.OpenURL(update.ReleasesURL); err != nil {
-					logx.Printf("error: opening the release page: %v\n", err)
 				}
 			case c := <-u.limitClicks:
 				if c.name != "" {
@@ -335,9 +330,6 @@ func versionLabel(v string) string {
 	}
 	return withV(v)
 }
-
-// updateLabel replaces the version line once GitHub has a newer release.
-func updateLabel(latest string) string { return "Update to " + withV(latest) }
 
 // withV adds the "v" that releases are tagged with, unless the build says "dev" or has one already.
 func withV(v string) string {

@@ -1,6 +1,6 @@
 module net-merge
 
-go 1.27
+go 1.26.3
 
 require (
 	fyne.io/systray v1.12.2

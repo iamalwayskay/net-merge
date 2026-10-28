@@ -36,17 +36,6 @@ func TestVersionLabel(t *testing.T) {
 	}
 }
 
-func TestUpdateLabel(t *testing.T) {
-	for _, c := range []struct{ in, want string }{
-		{"v0.3.4", "Update to v0.3.4"},
-		{"0.3.4", "Update to v0.3.4"}, // GitHub tags start with v, but do not depend on it
-	} {
-		if got := updateLabel(c.in); got != c.want {
-			t.Errorf("updateLabel(%q) = %q, want %q", c.in, got, c.want)
-		}
-	}
-}
-
 func TestTrayTooltipFitsWindowsLimit(t *testing.T) {
 	const mbit = 125_000
 	mk := func(name string, down, up float64) engine.SlotStats {

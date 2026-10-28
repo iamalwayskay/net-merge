@@ -53,6 +53,10 @@
 net-merge uses all your network adapters together. It works on **Windows, macOS and Linux**. It is free.
 There is no account, no server and no VPN.
 
+> **Privacy fork:** this fork removes the automatic GitHub release check from the tray. It makes no
+> analytics, telemetry, crash-reporting or update-check requests. The per-adapter reachability probes
+> remain because they prevent traffic being assigned to a connection that has lost internet access.
+
 A real test with Wi-Fi + an Android USB tether + an iPhone hotspot, 9 downloads at once:
 **232-303 Mbit/s**. The fastest connection alone gave about 121 Mbit/s.
 
@@ -348,9 +352,8 @@ net-merge when you do not want that.
 4. **Hover** the icon to see the speed of each connection and the total.
 5. **Right-click** the icon (on Mac, click it) to open the menu. It shows each connection's speed, how
    many connections net-merge gave it, and the buttons *Pause merging* / *Start merging* and *Quit*. The
-   line above *Quit* is the version you are running, like `v0.3.3`. It reads the newest release number
-   from GitHub (at start, and again every 6 hours) and turns into *Update to v0.3.4* if there is one;
-   click it to open the release page. Click a connection to cap it at 1, 2, 5, 10, 20, 50 or 100 Mbit/s
+   line above *Quit* is the version you are running, like `v0.3.3`, and is deliberately local-only in
+   this privacy fork. Click a connection to cap it at 1, 2, 5, 10, 20, 50 or 100 Mbit/s
    (or *Unlimited*). For any other speed, from a terminal: `net-merge limit "Ethernet 2" 25` (Mbit/s; 0 or
    `unlimited` removes the cap), and `net-merge limit` lists what is set. The cap covers its downloads and
    uploads and is remembered after a restart. Only traffic net-merge relays is capped: an app bound directly
