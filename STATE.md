@@ -28,6 +28,12 @@
 - With Bluetooth tethering enabled, a direct BlueZ `Network1.Connect("nap")` succeeds. NetworkManager
   then fails because udev renames `bnep0` to a MAC-derived name during DHCP and BlueZ tears it down.
   `packaging/10-bluetooth-pan.link`, installed under `/etc/systemd/network/`, keeps the kernel name.
+- Verified all three paths simultaneously: Plusnet on `wlp5s0`, TalkTalk on `wlp5s0-talktalk`, and
+  Vodafone mobile data on `bnep0`, each with its own default gateway and public IP. Net Merge assigned
+  live flows to all three.
+- The workstation side is automatic across login/reboot: the secondary Wi-Fi service, NetworkManager
+  autoconnect profiles and Net Merge autostart are enabled. Android must keep Bluetooth tethering on;
+  this workstation has no ADB authorization or KDE Connect pairing with which to change that setting.
 
 ### Trap
 
